@@ -1,0 +1,475 @@
+[
+  {
+    "id": "b0a06ead-01",
+    "patient_id": "b0a06ead-cc42-aa48-dad6-841d4aa679fa",
+    "patient_name": "Abdul Harris",
+    "category": "allergies",
+    "question": "What allergies does Abdul Harris have?",
+    "check": {
+      "type": "keywords",
+      "keywords": [
+        "eggs"
+      ]
+    },
+    "expected_tool": "get_allergies"
+  },
+  {
+    "id": "b0a06ead-02",
+    "patient_id": "b0a06ead-cc42-aa48-dad6-841d4aa679fa",
+    "patient_name": "Abdul Harris",
+    "category": "observations",
+    "question": "What was Abdul Harris's most recent blood pressure?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        120.0,
+        81.0
+      ],
+      "tol": 0.5
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "b0a06ead-03",
+    "patient_id": "b0a06ead-cc42-aa48-dad6-841d4aa679fa",
+    "patient_name": "Abdul Harris",
+    "category": "observations",
+    "question": "What was Abdul Harris's most recent BMI?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        30.1
+      ],
+      "tol": 0.15
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "b0a06ead-04",
+    "patient_id": "b0a06ead-cc42-aa48-dad6-841d4aa679fa",
+    "patient_name": "Abdul Harris",
+    "category": "conditions",
+    "question": "In which year was Abdul Harris first diagnosed with myocardial infarction?",
+    "check": {
+      "type": "year",
+      "year": "2002"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "b0a06ead-05",
+    "patient_id": "b0a06ead-cc42-aa48-dad6-841d4aa679fa",
+    "patient_name": "Abdul Harris",
+    "category": "cross-patient",
+    "question": "Has Abdul Harris ever been diagnosed with alzheimer's disease?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "b0a06ead-06",
+    "patient_id": "b0a06ead-cc42-aa48-dad6-841d4aa679fa",
+    "patient_name": "Abdul Harris",
+    "category": "imaging",
+    "question": "Does Abdul Harris have any chest X-ray reports on record?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_imaging_reports"
+  },
+  {
+    "id": "b0a06ead-07",
+    "patient_id": "b0a06ead-cc42-aa48-dad6-841d4aa679fa",
+    "patient_name": "Abdul Harris",
+    "category": "unanswerable",
+    "question": "What is Abdul Harris's blood type?",
+    "check": {
+      "type": "refuse"
+    },
+    "expected_tool": null
+  },
+  {
+    "id": "ccfc4db2-01",
+    "patient_id": "ccfc4db2-2026-7adb-3db0-33f3828140bb",
+    "patient_name": "Abe Schmidt",
+    "category": "medications",
+    "question": "Which medications is Abe Schmidt currently taking?",
+    "check": {
+      "type": "keywords",
+      "keywords": [
+        "acetaminophen",
+        "fentanyl",
+        "hydrochlorothiazide"
+      ]
+    },
+    "expected_tool": "get_medications"
+  },
+  {
+    "id": "ccfc4db2-02",
+    "patient_id": "ccfc4db2-2026-7adb-3db0-33f3828140bb",
+    "patient_name": "Abe Schmidt",
+    "category": "allergies",
+    "question": "Does Abe Schmidt have any recorded allergies?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_allergies"
+  },
+  {
+    "id": "ccfc4db2-03",
+    "patient_id": "ccfc4db2-2026-7adb-3db0-33f3828140bb",
+    "patient_name": "Abe Schmidt",
+    "category": "observations",
+    "question": "What was Abe Schmidt's most recent blood pressure?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        129.0,
+        87.0
+      ],
+      "tol": 0.5
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "ccfc4db2-04",
+    "patient_id": "ccfc4db2-2026-7adb-3db0-33f3828140bb",
+    "patient_name": "Abe Schmidt",
+    "category": "observations",
+    "question": "What was Abe Schmidt's most recent BMI?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        27.4
+      ],
+      "tol": 0.15
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "ccfc4db2-05",
+    "patient_id": "ccfc4db2-2026-7adb-3db0-33f3828140bb",
+    "patient_name": "Abe Schmidt",
+    "category": "conditions",
+    "question": "In which year was Abe Schmidt first diagnosed with body mass index 30+ - obesity?",
+    "check": {
+      "type": "year",
+      "year": "2016"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "ccfc4db2-06",
+    "patient_id": "ccfc4db2-2026-7adb-3db0-33f3828140bb",
+    "patient_name": "Abe Schmidt",
+    "category": "cross-patient",
+    "question": "Has Abe Schmidt ever been diagnosed with anemia?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "ccfc4db2-07",
+    "patient_id": "ccfc4db2-2026-7adb-3db0-33f3828140bb",
+    "patient_name": "Abe Schmidt",
+    "category": "imaging",
+    "question": "Does Abe Schmidt have any chest X-ray reports on record?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_imaging_reports"
+  },
+  {
+    "id": "ccfc4db2-08",
+    "patient_id": "ccfc4db2-2026-7adb-3db0-33f3828140bb",
+    "patient_name": "Abe Schmidt",
+    "category": "unanswerable",
+    "question": "What is Abe Schmidt's NHS number?",
+    "check": {
+      "type": "refuse"
+    },
+    "expected_tool": null
+  },
+  {
+    "id": "31a2e8ec-01",
+    "patient_id": "31a2e8ec-69fc-8a71-3ab6-36cbdd508713",
+    "patient_name": "Adelaida DuBuque",
+    "category": "medications",
+    "question": "Which medications is Adelaida DuBuque currently taking?",
+    "check": {
+      "type": "keywords",
+      "keywords": [
+        "donepezil"
+      ]
+    },
+    "expected_tool": "get_medications"
+  },
+  {
+    "id": "31a2e8ec-02",
+    "patient_id": "31a2e8ec-69fc-8a71-3ab6-36cbdd508713",
+    "patient_name": "Adelaida DuBuque",
+    "category": "allergies",
+    "question": "Does Adelaida DuBuque have any recorded allergies?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_allergies"
+  },
+  {
+    "id": "31a2e8ec-03",
+    "patient_id": "31a2e8ec-69fc-8a71-3ab6-36cbdd508713",
+    "patient_name": "Adelaida DuBuque",
+    "category": "observations",
+    "question": "What was Adelaida DuBuque's most recent blood pressure?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        117.0,
+        74.0
+      ],
+      "tol": 0.5
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "31a2e8ec-04",
+    "patient_id": "31a2e8ec-69fc-8a71-3ab6-36cbdd508713",
+    "patient_name": "Adelaida DuBuque",
+    "category": "observations",
+    "question": "What was Adelaida DuBuque's most recent BMI?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        27.4
+      ],
+      "tol": 0.15
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "31a2e8ec-05",
+    "patient_id": "31a2e8ec-69fc-8a71-3ab6-36cbdd508713",
+    "patient_name": "Adelaida DuBuque",
+    "category": "conditions",
+    "question": "In which year was Adelaida DuBuque first diagnosed with pneumonia?",
+    "check": {
+      "type": "year",
+      "year": "2017"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "31a2e8ec-06",
+    "patient_id": "31a2e8ec-69fc-8a71-3ab6-36cbdd508713",
+    "patient_name": "Adelaida DuBuque",
+    "category": "cross-patient",
+    "question": "Has Adelaida DuBuque ever been diagnosed with carcinoma in situ of prostate?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "31a2e8ec-07",
+    "patient_id": "31a2e8ec-69fc-8a71-3ab6-36cbdd508713",
+    "patient_name": "Adelaida DuBuque",
+    "category": "imaging",
+    "question": "Does Adelaida DuBuque have any chest X-ray reports on record?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_imaging_reports"
+  },
+  {
+    "id": "31a2e8ec-08",
+    "patient_id": "31a2e8ec-69fc-8a71-3ab6-36cbdd508713",
+    "patient_name": "Adelaida DuBuque",
+    "category": "unanswerable",
+    "question": "Who is Adelaida DuBuque's GP?",
+    "check": {
+      "type": "refuse"
+    },
+    "expected_tool": null
+  },
+  {
+    "id": "71a8b156-01",
+    "patient_id": "71a8b156-760b-df6b-859e-eefc7932a526",
+    "patient_name": "Adriana Hintz",
+    "category": "allergies",
+    "question": "Does Adriana Hintz have any recorded allergies?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_allergies"
+  },
+  {
+    "id": "71a8b156-02",
+    "patient_id": "71a8b156-760b-df6b-859e-eefc7932a526",
+    "patient_name": "Adriana Hintz",
+    "category": "observations",
+    "question": "What was Adriana Hintz's most recent blood pressure?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        105.0,
+        78.0
+      ],
+      "tol": 0.5
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "71a8b156-03",
+    "patient_id": "71a8b156-760b-df6b-859e-eefc7932a526",
+    "patient_name": "Adriana Hintz",
+    "category": "observations",
+    "question": "What was Adriana Hintz's most recent BMI?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        21.5
+      ],
+      "tol": 0.15
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "71a8b156-04",
+    "patient_id": "71a8b156-760b-df6b-859e-eefc7932a526",
+    "patient_name": "Adriana Hintz",
+    "category": "cross-patient",
+    "question": "Has Adriana Hintz ever been diagnosed with body mass index 30+ - obesity?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "71a8b156-05",
+    "patient_id": "71a8b156-760b-df6b-859e-eefc7932a526",
+    "patient_name": "Adriana Hintz",
+    "category": "imaging",
+    "question": "Does Adriana Hintz have any chest X-ray reports on record?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_imaging_reports"
+  },
+  {
+    "id": "71a8b156-06",
+    "patient_id": "71a8b156-760b-df6b-859e-eefc7932a526",
+    "patient_name": "Adriana Hintz",
+    "category": "unanswerable",
+    "question": "What is Adriana Hintz's blood type?",
+    "check": {
+      "type": "refuse"
+    },
+    "expected_tool": null
+  },
+  {
+    "id": "76b289fd-01",
+    "patient_id": "76b289fd-e825-734c-8446-316f59643593",
+    "patient_name": "Agueda Gerhold",
+    "category": "medications",
+    "question": "Which medications is Agueda Gerhold currently taking?",
+    "check": {
+      "type": "keywords",
+      "keywords": [
+        "acetaminophen",
+        "astemizole",
+        "enoxaparin",
+        "epinephrine"
+      ]
+    },
+    "expected_tool": "get_medications"
+  },
+  {
+    "id": "76b289fd-02",
+    "patient_id": "76b289fd-e825-734c-8446-316f59643593",
+    "patient_name": "Agueda Gerhold",
+    "category": "allergies",
+    "question": "Does Agueda Gerhold have any recorded allergies?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_allergies"
+  },
+  {
+    "id": "76b289fd-03",
+    "patient_id": "76b289fd-e825-734c-8446-316f59643593",
+    "patient_name": "Agueda Gerhold",
+    "category": "observations",
+    "question": "What was Agueda Gerhold's most recent blood pressure?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        128.0,
+        83.0
+      ],
+      "tol": 0.5
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "76b289fd-04",
+    "patient_id": "76b289fd-e825-734c-8446-316f59643593",
+    "patient_name": "Agueda Gerhold",
+    "category": "observations",
+    "question": "What was Agueda Gerhold's most recent BMI?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        29.9
+      ],
+      "tol": 0.15
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "76b289fd-05",
+    "patient_id": "76b289fd-e825-734c-8446-316f59643593",
+    "patient_name": "Agueda Gerhold",
+    "category": "conditions",
+    "question": "In which year was Agueda Gerhold first diagnosed with hypoxemia?",
+    "check": {
+      "type": "year",
+      "year": "2021"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "76b289fd-06",
+    "patient_id": "76b289fd-e825-734c-8446-316f59643593",
+    "patient_name": "Agueda Gerhold",
+    "category": "cross-patient",
+    "question": "Has Agueda Gerhold ever been diagnosed with cardiac arrest?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "76b289fd-07",
+    "patient_id": "76b289fd-e825-734c-8446-316f59643593",
+    "patient_name": "Agueda Gerhold",
+    "category": "imaging",
+    "question": "Does Agueda Gerhold have any chest X-ray reports on record?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_imaging_reports"
+  },
+  {
+    "id": "76b289fd-08",
+    "patient_id": "76b289fd-e825-734c-8446-316f59643593",
+    "patient_name": "Agueda Gerhold",
+    "category": "unanswerable",
+    "question": "What is Agueda Gerhold's NHS number?",
+    "check": {
+      "type": "refuse"
+    },
+    "expected_tool": null
+  }
+]

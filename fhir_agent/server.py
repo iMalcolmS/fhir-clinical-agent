@@ -38,7 +38,13 @@ INSTRUCTIONS = (
 def _audit(tool, patient_id=None, **detail):
     entry = {"ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
              "event": "tool_call", "tool": tool, "patient_id": patient_id, **detail}
-    print(json.dumps(entry), file=sys.stderr, flush=True)  # stdout is the MCP channel
+    path = os.environ.get("FHIR_AUDIT_LOG")  # a file path, or stderr if unset
+    if path:
+        os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(entry) + "\n")
+    else:
+        print(json.dumps(entry), file=sys.stderr, flush=True)  # stdout is the MCP channel
 
 
 def create_server(store: FhirStore) -> MCPServer:
