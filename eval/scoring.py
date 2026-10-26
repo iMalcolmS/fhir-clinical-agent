@@ -21,8 +21,18 @@ NEGATION = re.compile(
 NUMBER = re.compile(r"\d+(?:\.\d+)?")
 
 
+# The agent is told to use one fixed refusal sentence, but sometimes refuses in
+# its own words ("... is not listed in the patient's record"). These patterns
+# count as a refusal too. Added after the first run (see eval/report_v1.md).
+REFUSAL_VARIANTS = re.compile(
+    r"\bnot (listed|recorded|documented|available|included|present|found)\b"
+    r"[^.]{0,40}\b(record|chart|notes)\b",
+    re.IGNORECASE,
+)
+
+
 def is_refusal(answer):
-    return REFUSAL in answer.lower()
+    return REFUSAL in answer.lower() or bool(REFUSAL_VARIANTS.search(answer))
 
 
 def says_no(answer):

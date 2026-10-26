@@ -50,7 +50,7 @@ async def test_observation_search_suggests_names_when_nothing_matches():
         pid = await _patient_id(client)
         result = payload(await client.call_tool(
             "get_observations", {"patient_id": pid, "name": "no such measurement"}))
-    assert result["matches"] == {} and result["available"]
+    assert result["matches"] == [] and result["available"]
 
 
 async def test_unknown_patient_is_a_clear_error():

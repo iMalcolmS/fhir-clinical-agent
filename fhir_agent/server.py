@@ -93,14 +93,18 @@ def create_server(store: FhirStore) -> MCPServer:
     def get_observations(patient_id: str, name: str, limit: int = 5) -> dict:
         """Latest readings of a measurement (e.g. 'blood pressure', 'BMI', 'HbA1c').
 
-        Matches on part of the name. If nothing matches, returns the measurement
-        names the record does contain.
+        Matches on part of the name. Several measurements can match (e.g. 'BMI'
+        matches both the BMI ratio in kg/m2 and the BMI percentile used for
+        children): they are listed closest match first, each with its unit.
+        If nothing matches, returns the measurement names the record contains.
         """
         series = observation_series(bundle_for("get_observations", patient_id))
-        matches = {k: v for k, v in series.items() if name.lower() in k.lower()}
-        if not matches:
-            return {"matches": {}, "available": sorted(series)}
-        return {"matches": {k: v[-limit:][::-1] for k, v in matches.items()}}
+        names = [k for k in series if name.lower() in k.lower()]
+        if not names:
+            return {"matches": [], "available": sorted(series)}
+        names.sort(key=len)  # shorter names carry fewer qualifiers ("[Percentile] Per age and sex")
+        return {"matches": [{"measurement": k, "unit": series[k][-1]["unit"],
+                             "latest_first": series[k][-limit:][::-1]} for k in names]}
 
     @server.tool()
     def get_imaging_reports(patient_id: str) -> list[dict]:

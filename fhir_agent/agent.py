@@ -36,7 +36,8 @@ Rules:
 2. Answer only from tool results. Do not use outside medical knowledge to fill gaps.
 3. If the record does not contain the answer, reply exactly: "{REFUSAL}"
 4. If asked whether the patient has a condition and the record shows they do not, answer "No" and say it is not in the record.
-5. Keep answers short and include dates and units when the tools give them."""
+5. If a tool returns several matching measurements, answer with the closest match to the question and name it with its unit; mention the others only if they could be what was meant (e.g. BMI ratio vs BMI percentile).
+6. Keep answers short and include dates and units when the tools give them."""
 
 
 @dataclass

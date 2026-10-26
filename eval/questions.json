@@ -34,7 +34,7 @@
     "patient_id": "b0a06ead-cc42-aa48-dad6-841d4aa679fa",
     "patient_name": "Abdul Harris",
     "category": "observations",
-    "question": "What was Abdul Harris's most recent BMI?",
+    "question": "What was Abdul Harris's most recent BMI in kg/m2?",
     "check": {
       "type": "numbers",
       "numbers": [
@@ -137,7 +137,7 @@
     "patient_id": "ccfc4db2-2026-7adb-3db0-33f3828140bb",
     "patient_name": "Abe Schmidt",
     "category": "observations",
-    "question": "What was Abe Schmidt's most recent BMI?",
+    "question": "What was Abe Schmidt's most recent BMI in kg/m2?",
     "check": {
       "type": "numbers",
       "numbers": [
@@ -238,7 +238,7 @@
     "patient_id": "31a2e8ec-69fc-8a71-3ab6-36cbdd508713",
     "patient_name": "Adelaida DuBuque",
     "category": "observations",
-    "question": "What was Adelaida DuBuque's most recent BMI?",
+    "question": "What was Adelaida DuBuque's most recent BMI in kg/m2?",
     "check": {
       "type": "numbers",
       "numbers": [
@@ -325,7 +325,7 @@
     "patient_id": "71a8b156-760b-df6b-859e-eefc7932a526",
     "patient_name": "Adriana Hintz",
     "category": "observations",
-    "question": "What was Adriana Hintz's most recent BMI?",
+    "question": "What was Adriana Hintz's most recent BMI in kg/m2?",
     "check": {
       "type": "numbers",
       "numbers": [
@@ -417,7 +417,7 @@
     "patient_id": "76b289fd-e825-734c-8446-316f59643593",
     "patient_name": "Agueda Gerhold",
     "category": "observations",
-    "question": "What was Agueda Gerhold's most recent BMI?",
+    "question": "What was Agueda Gerhold's most recent BMI in kg/m2?",
     "check": {
       "type": "numbers",
       "numbers": [

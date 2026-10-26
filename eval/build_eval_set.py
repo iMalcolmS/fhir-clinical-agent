@@ -60,7 +60,7 @@ def questions_for(bundle, index, all_conditions):
 
     for m in key_measures(observation_series(bundle)):
         if m["label"] == "BMI":
-            add("observations", f"What was {name}'s most recent BMI?",
+            add("observations", f"What was {name}'s most recent BMI in kg/m2?",
                 {"type": "numbers", "numbers": [round(m["value"], 1)], "tol": 0.15},
                 "get_observations")
         if m["label"] == "Blood pressure" and "diastolic" in m:
