@@ -4,13 +4,13 @@
 
 | Metric | Value |
 |---|---|
-| **Answer pass rate** | **97%** |
+| **Answer pass rate** | **100%** |
 | Expected tool called | 100% |
 | Patient isolation (no other patient's id used) | 100% |
-| Answerable questions wrongly refused | 6% |
-| Mean tool calls per question | 2.1 |
+| Answerable questions wrongly refused | 0% |
+| Mean tool calls per question | 2.0 |
 | Median latency | 1.2 s |
-| Mean tokens per question | 3,085 |
+| Mean tokens per question | 2,844 |
 
 | Category | Questions | Pass rate | Expected tool called |
 |---|---|---|---|
@@ -19,11 +19,5 @@
 | cross-patient | 5 | 100% | 100% |
 | imaging | 5 | 100% | 100% |
 | medications | 3 | 100% | 100% |
-| observations | 10 | 90% | 100% |
+| observations | 10 | 100% | 100% |
 | unanswerable | 5 | 100% | – |
-
-## Failures
-
-| Category | Question | Tools called | Answer (start) |
-|---|---|---|---|
-| observations | What was Adriana Hintz's most recent BMI in kg/m2? | find_patients, get_observations | I could not find this information in the patient's record. |

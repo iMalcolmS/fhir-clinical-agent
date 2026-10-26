@@ -88,3 +88,10 @@ async def test_rejects_non_report_resources():
         result = await client.call_tool(
             "add_imaging_report", {"patient_id": pid, "report": {"resourceType": "Patient"}})
     assert result.is_error
+
+
+def test_search_terms_expand_abbreviations():
+    from fhir_agent.server import search_terms
+    assert "body mass index" in search_terms("BMI")
+    assert "bmi" in search_terms("body mass index")
+    assert search_terms("cholesterol") == {"cholesterol"}

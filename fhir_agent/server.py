@@ -35,6 +35,34 @@ INSTRUCTIONS = (
 )
 
 
+# Clinicians abbreviate; record names do not always contain the abbreviation
+# (Synthea uses both "Body mass index (BMI) [Ratio]" and "Body Mass Index").
+ALIASES = {
+    "bmi": ["body mass index"],
+    "bp": ["blood pressure"],
+    "hba1c": ["hemoglobin a1c"],
+    "a1c": ["hemoglobin a1c"],
+    "pulse": ["heart rate"],
+    "hr": ["heart rate"],
+    "temperature": ["body temperature"],
+    "weight": ["body weight"],
+    "height": ["body height"],
+    "egfr": ["glomerular filtration rate"],
+}
+
+
+def search_terms(query):
+    """The query plus its known synonyms, lower-cased."""
+    q = query.lower().strip()
+    terms = {q}
+    for short, longs in ALIASES.items():
+        if q == short:
+            terms.update(longs)
+        if q in longs:
+            terms.add(short)
+    return terms
+
+
 def _audit(tool, patient_id=None, **detail):
     entry = {"ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
              "event": "tool_call", "tool": tool, "patient_id": patient_id, **detail}
@@ -99,7 +127,8 @@ def create_server(store: FhirStore) -> MCPServer:
         If nothing matches, returns the measurement names the record contains.
         """
         series = observation_series(bundle_for("get_observations", patient_id))
-        names = [k for k in series if name.lower() in k.lower()]
+        terms = search_terms(name)
+        names = [k for k in series if any(t in k.lower() for t in terms)]
         if not names:
             return {"matches": [], "available": sorted(series)}
         names.sort(key=len)  # shorter names carry fewer qualifiers ("[Percentile] Per age and sex")
