@@ -1,0 +1,490 @@
+[
+  {
+    "id": "92fb7efc-01",
+    "patient_id": "92fb7efc-5cfd-f8d3-927b-42f8ee099531",
+    "patient_name": "Ahmed O'Reilly",
+    "category": "medications",
+    "question": "Which medications is Ahmed O'Reilly currently taking?",
+    "check": {
+      "type": "keywords",
+      "keywords": [
+        "cetirizine",
+        "epinephrine"
+      ]
+    },
+    "expected_tool": "get_medications"
+  },
+  {
+    "id": "92fb7efc-02",
+    "patient_id": "92fb7efc-5cfd-f8d3-927b-42f8ee099531",
+    "patient_name": "Ahmed O'Reilly",
+    "category": "allergies",
+    "question": "What allergies does Ahmed O'Reilly have?",
+    "check": {
+      "type": "keywords",
+      "keywords": [
+        "fish"
+      ]
+    },
+    "expected_tool": "get_allergies"
+  },
+  {
+    "id": "92fb7efc-03",
+    "patient_id": "92fb7efc-5cfd-f8d3-927b-42f8ee099531",
+    "patient_name": "Ahmed O'Reilly",
+    "category": "observations",
+    "question": "What was Ahmed O'Reilly's most recent blood pressure?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        136.0,
+        75.0
+      ],
+      "tol": 0.5
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "92fb7efc-04",
+    "patient_id": "92fb7efc-5cfd-f8d3-927b-42f8ee099531",
+    "patient_name": "Ahmed O'Reilly",
+    "category": "observations",
+    "question": "What was Ahmed O'Reilly's most recent BMI in kg/m2?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        26.4
+      ],
+      "tol": 0.15
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "92fb7efc-05",
+    "patient_id": "92fb7efc-5cfd-f8d3-927b-42f8ee099531",
+    "patient_name": "Ahmed O'Reilly",
+    "category": "cross-patient",
+    "question": "Has Ahmed O'Reilly ever been diagnosed with cardiac arrest?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "92fb7efc-06",
+    "patient_id": "92fb7efc-5cfd-f8d3-927b-42f8ee099531",
+    "patient_name": "Ahmed O'Reilly",
+    "category": "imaging",
+    "question": "Does Ahmed O'Reilly have any chest X-ray reports on record?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_imaging_reports"
+  },
+  {
+    "id": "92fb7efc-07",
+    "patient_id": "92fb7efc-5cfd-f8d3-927b-42f8ee099531",
+    "patient_name": "Ahmed O'Reilly",
+    "category": "unanswerable",
+    "question": "Who is Ahmed O'Reilly's GP?",
+    "check": {
+      "type": "refuse"
+    },
+    "expected_tool": null
+  },
+  {
+    "id": "81aa7647-01",
+    "patient_id": "81aa7647-779f-fd6b-94cf-782e606efeb2",
+    "patient_name": "Aimee Hudson",
+    "category": "allergies",
+    "question": "Does Aimee Hudson have any recorded allergies?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_allergies"
+  },
+  {
+    "id": "81aa7647-02",
+    "patient_id": "81aa7647-779f-fd6b-94cf-782e606efeb2",
+    "patient_name": "Aimee Hudson",
+    "category": "observations",
+    "question": "What was Aimee Hudson's most recent blood pressure?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        131.0,
+        82.0
+      ],
+      "tol": 0.5
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "81aa7647-03",
+    "patient_id": "81aa7647-779f-fd6b-94cf-782e606efeb2",
+    "patient_name": "Aimee Hudson",
+    "category": "observations",
+    "question": "What was Aimee Hudson's most recent BMI in kg/m2?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        14.1
+      ],
+      "tol": 0.15
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "81aa7647-04",
+    "patient_id": "81aa7647-779f-fd6b-94cf-782e606efeb2",
+    "patient_name": "Aimee Hudson",
+    "category": "cross-patient",
+    "question": "Has Aimee Hudson ever been diagnosed with child attention deficit disorder?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "81aa7647-05",
+    "patient_id": "81aa7647-779f-fd6b-94cf-782e606efeb2",
+    "patient_name": "Aimee Hudson",
+    "category": "imaging",
+    "question": "Does Aimee Hudson have any chest X-ray reports on record?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_imaging_reports"
+  },
+  {
+    "id": "81aa7647-06",
+    "patient_id": "81aa7647-779f-fd6b-94cf-782e606efeb2",
+    "patient_name": "Aimee Hudson",
+    "category": "unanswerable",
+    "question": "What is Aimee Hudson's blood type?",
+    "check": {
+      "type": "refuse"
+    },
+    "expected_tool": null
+  },
+  {
+    "id": "346a1435-01",
+    "patient_id": "346a1435-2455-914f-c287-7b88052d05db",
+    "patient_name": "Akiko Pfannerstill",
+    "category": "medications",
+    "question": "Which medications is Akiko Pfannerstill currently taking?",
+    "check": {
+      "type": "keywords",
+      "keywords": [
+        "amlodipine",
+        "astemizole",
+        "camila",
+        "lisinopril"
+      ]
+    },
+    "expected_tool": "get_medications"
+  },
+  {
+    "id": "346a1435-02",
+    "patient_id": "346a1435-2455-914f-c287-7b88052d05db",
+    "patient_name": "Akiko Pfannerstill",
+    "category": "allergies",
+    "question": "What allergies does Akiko Pfannerstill have?",
+    "check": {
+      "type": "keywords",
+      "keywords": [
+        "animal",
+        "eggs",
+        "fish",
+        "grass",
+        "house",
+        "mold",
+        "shellfish",
+        "tree"
+      ]
+    },
+    "expected_tool": "get_allergies"
+  },
+  {
+    "id": "346a1435-03",
+    "patient_id": "346a1435-2455-914f-c287-7b88052d05db",
+    "patient_name": "Akiko Pfannerstill",
+    "category": "observations",
+    "question": "What was Akiko Pfannerstill's most recent blood pressure?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        121.0,
+        76.0
+      ],
+      "tol": 0.5
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "346a1435-04",
+    "patient_id": "346a1435-2455-914f-c287-7b88052d05db",
+    "patient_name": "Akiko Pfannerstill",
+    "category": "observations",
+    "question": "What was Akiko Pfannerstill's most recent BMI in kg/m2?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        27.9
+      ],
+      "tol": 0.15
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "346a1435-05",
+    "patient_id": "346a1435-2455-914f-c287-7b88052d05db",
+    "patient_name": "Akiko Pfannerstill",
+    "category": "conditions",
+    "question": "In which year was Akiko Pfannerstill first diagnosed with prediabetes?",
+    "check": {
+      "type": "year",
+      "year": "2001"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "346a1435-06",
+    "patient_id": "346a1435-2455-914f-c287-7b88052d05db",
+    "patient_name": "Akiko Pfannerstill",
+    "category": "cross-patient",
+    "question": "Has Akiko Pfannerstill ever been diagnosed with chronic intractable migraine without aura?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "346a1435-07",
+    "patient_id": "346a1435-2455-914f-c287-7b88052d05db",
+    "patient_name": "Akiko Pfannerstill",
+    "category": "imaging",
+    "question": "Does Akiko Pfannerstill have any chest X-ray reports on record?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_imaging_reports"
+  },
+  {
+    "id": "346a1435-08",
+    "patient_id": "346a1435-2455-914f-c287-7b88052d05db",
+    "patient_name": "Akiko Pfannerstill",
+    "category": "unanswerable",
+    "question": "What is Akiko Pfannerstill's NHS number?",
+    "check": {
+      "type": "refuse"
+    },
+    "expected_tool": null
+  },
+  {
+    "id": "1cfa5a70-01",
+    "patient_id": "1cfa5a70-7f3c-4227-5cf1-e182fcff4cd4",
+    "patient_name": "Alaine Willms",
+    "category": "medications",
+    "question": "Which medications is Alaine Willms currently taking?",
+    "check": {
+      "type": "keywords",
+      "keywords": [
+        "alendronic",
+        "metformin",
+        "piperacillin",
+        "vancomycin"
+      ]
+    },
+    "expected_tool": "get_medications"
+  },
+  {
+    "id": "1cfa5a70-02",
+    "patient_id": "1cfa5a70-7f3c-4227-5cf1-e182fcff4cd4",
+    "patient_name": "Alaine Willms",
+    "category": "allergies",
+    "question": "Does Alaine Willms have any recorded allergies?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_allergies"
+  },
+  {
+    "id": "1cfa5a70-03",
+    "patient_id": "1cfa5a70-7f3c-4227-5cf1-e182fcff4cd4",
+    "patient_name": "Alaine Willms",
+    "category": "observations",
+    "question": "What was Alaine Willms's most recent blood pressure?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        126.0,
+        75.0
+      ],
+      "tol": 0.5
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "1cfa5a70-04",
+    "patient_id": "1cfa5a70-7f3c-4227-5cf1-e182fcff4cd4",
+    "patient_name": "Alaine Willms",
+    "category": "observations",
+    "question": "What was Alaine Willms's most recent BMI in kg/m2?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        29.4
+      ],
+      "tol": 0.15
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "1cfa5a70-05",
+    "patient_id": "1cfa5a70-7f3c-4227-5cf1-e182fcff4cd4",
+    "patient_name": "Alaine Willms",
+    "category": "conditions",
+    "question": "In which year was Alaine Willms first diagnosed with osteoporosis?",
+    "check": {
+      "type": "year",
+      "year": "2019"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "1cfa5a70-06",
+    "patient_id": "1cfa5a70-7f3c-4227-5cf1-e182fcff4cd4",
+    "patient_name": "Alaine Willms",
+    "category": "cross-patient",
+    "question": "Has Alaine Willms ever been diagnosed with chronic low back pain?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "1cfa5a70-07",
+    "patient_id": "1cfa5a70-7f3c-4227-5cf1-e182fcff4cd4",
+    "patient_name": "Alaine Willms",
+    "category": "imaging",
+    "question": "Does Alaine Willms have any chest X-ray reports on record?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_imaging_reports"
+  },
+  {
+    "id": "1cfa5a70-08",
+    "patient_id": "1cfa5a70-7f3c-4227-5cf1-e182fcff4cd4",
+    "patient_name": "Alaine Willms",
+    "category": "unanswerable",
+    "question": "Who is Alaine Willms's GP?",
+    "check": {
+      "type": "refuse"
+    },
+    "expected_tool": null
+  },
+  {
+    "id": "97899f1d-01",
+    "patient_id": "97899f1d-9c3b-2b90-17b8-400c11ab8f0f",
+    "patient_name": "Alberta Waters",
+    "category": "medications",
+    "question": "Which medications is Alberta Waters currently taking?",
+    "check": {
+      "type": "keywords",
+      "keywords": [
+        "acetaminophen",
+        "ibuprofen"
+      ]
+    },
+    "expected_tool": "get_medications"
+  },
+  {
+    "id": "97899f1d-02",
+    "patient_id": "97899f1d-9c3b-2b90-17b8-400c11ab8f0f",
+    "patient_name": "Alberta Waters",
+    "category": "allergies",
+    "question": "Does Alberta Waters have any recorded allergies?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_allergies"
+  },
+  {
+    "id": "97899f1d-03",
+    "patient_id": "97899f1d-9c3b-2b90-17b8-400c11ab8f0f",
+    "patient_name": "Alberta Waters",
+    "category": "observations",
+    "question": "What was Alberta Waters's most recent blood pressure?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        104.0,
+        78.0
+      ],
+      "tol": 0.5
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "97899f1d-04",
+    "patient_id": "97899f1d-9c3b-2b90-17b8-400c11ab8f0f",
+    "patient_name": "Alberta Waters",
+    "category": "observations",
+    "question": "What was Alberta Waters's most recent BMI in kg/m2?",
+    "check": {
+      "type": "numbers",
+      "numbers": [
+        27.9
+      ],
+      "tol": 0.15
+    },
+    "expected_tool": "get_observations"
+  },
+  {
+    "id": "97899f1d-05",
+    "patient_id": "97899f1d-9c3b-2b90-17b8-400c11ab8f0f",
+    "patient_name": "Alberta Waters",
+    "category": "conditions",
+    "question": "In which year was Alberta Waters first diagnosed with sprain of wrist?",
+    "check": {
+      "type": "year",
+      "year": "2021"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "97899f1d-06",
+    "patient_id": "97899f1d-9c3b-2b90-17b8-400c11ab8f0f",
+    "patient_name": "Alberta Waters",
+    "category": "cross-patient",
+    "question": "Has Alberta Waters ever been diagnosed with chronic sinusitis?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_conditions"
+  },
+  {
+    "id": "97899f1d-07",
+    "patient_id": "97899f1d-9c3b-2b90-17b8-400c11ab8f0f",
+    "patient_name": "Alberta Waters",
+    "category": "imaging",
+    "question": "Does Alberta Waters have any chest X-ray reports on record?",
+    "check": {
+      "type": "negative"
+    },
+    "expected_tool": "get_imaging_reports"
+  },
+  {
+    "id": "97899f1d-08",
+    "patient_id": "97899f1d-9c3b-2b90-17b8-400c11ab8f0f",
+    "patient_name": "Alberta Waters",
+    "category": "unanswerable",
+    "question": "What is Alberta Waters's blood type?",
+    "check": {
+      "type": "refuse"
+    },
+    "expected_tool": null
+  }
+]

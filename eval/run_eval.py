@@ -36,10 +36,10 @@ RESULTS = Path("eval/results.jsonl")
 REPORT = Path("eval/report.md")
 
 
-async def run(questions, data_dir, sleep):
+async def run(questions, data_dir, sleep, results_path):
     done = set()
-    if RESULTS.exists():
-        done = {json.loads(line)["id"] for line in RESULTS.read_text().splitlines() if line}
+    if results_path.exists():
+        done = {json.loads(line)["id"] for line in results_path.read_text().splitlines() if line}
     todo = [q for q in questions if q["id"] not in done]
     print(f"{len(done)} already done, {len(todo)} to run")
 
@@ -69,7 +69,7 @@ async def run(questions, data_dir, sleep):
                 "completion_tokens": trace.completion_tokens, "latency_s": trace.latency_s,
                 "stopped": trace.stopped,
             }
-            with RESULTS.open("a", encoding="utf-8") as f:
+            with results_path.open("a", encoding="utf-8") as f:
                 f.write(json.dumps(row) + "\n")
             print(f"[{i}/{len(todo)}] {'PASS' if passed else 'FAIL'} {q['category']:<14} {q['question']}")
             await anyio.sleep(sleep)
@@ -80,7 +80,7 @@ def pct(values):
     return f"{100 * sum(values) / len(values):.0f}%" if values else "–"
 
 
-def report(rows):
+def report(rows, report_path=REPORT):
     answerable = [r for r in rows if r["check"]["type"] not in ("refuse", "negative")]
     needs_tool = [r for r in rows if r["expected_tool"]]
     lines = [
@@ -109,7 +109,7 @@ def report(rows):
         for r in failures:
             answer = r["answer"].replace("\n", " ").replace("|", "/")[:120]
             lines.append(f"| {r['category']} | {r['question']} | {', '.join(r['tools']) or '–'} | {answer} |")
-    REPORT.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return "\n".join(lines[:16])
 
 
@@ -118,15 +118,19 @@ def main():
     parser.add_argument("--data-dir", default="data/synthea")
     parser.add_argument("--sleep", type=float, default=4.0, help="seconds between questions")
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--questions", default=str(QUESTIONS))
+    parser.add_argument("--results", default=str(RESULTS))
+    parser.add_argument("--report", default=str(REPORT))
     args = parser.parse_args()
     load_env()
     os.environ.setdefault("FHIR_AUDIT_LOG", "runs/audit.jsonl")
 
-    questions = json.loads(QUESTIONS.read_text())[: args.limit]
-    anyio.run(run, questions, args.data_dir, args.sleep)
+    results_path, report_path = Path(args.results), Path(args.report)
+    questions = json.loads(Path(args.questions).read_text())[: args.limit]
+    anyio.run(run, questions, args.data_dir, args.sleep, results_path)
     ids = {q["id"] for q in questions}
-    rows = [json.loads(l) for l in RESULTS.read_text().splitlines() if l]
-    print("\n" + report([r for r in rows if r["id"] in ids]))
+    rows = [json.loads(l) for l in results_path.read_text().splitlines() if l]
+    print("\n" + report([r for r in rows if r["id"] in ids], report_path))
 
 
 if __name__ == "__main__":

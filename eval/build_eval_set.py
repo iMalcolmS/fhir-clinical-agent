@@ -91,19 +91,21 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--data-dir", default="data/synthea")
     parser.add_argument("--patients", type=int, default=5)
+    parser.add_argument("--skip", type=int, default=0, help="skip the first N patients (held-out set)")
+    parser.add_argument("--out", default=str(OUT))
     args = parser.parse_args()
 
     bundles = [load_fhir_bundle(p) for p in sorted(Path(args.data_dir).glob("*.json"))]
     all_conditions = sorted({p["problem"] for b in bundles for p in problem_list(b)
                              if not p["social"] and p["status"] == "active"})
     questions = []
-    for i, bundle in enumerate(bundles[: args.patients]):
+    for i, bundle in enumerate(bundles[args.skip: args.skip + args.patients], start=args.skip):
         questions += questions_for(bundle, i, all_conditions)
-    OUT.write_text(json.dumps(questions, indent=2, ensure_ascii=False), encoding="utf-8")
+    Path(args.out).write_text(json.dumps(questions, indent=2, ensure_ascii=False), encoding="utf-8")
     counts = {}
     for q in questions:
         counts[q["category"]] = counts.get(q["category"], 0) + 1
-    print(f"Wrote {len(questions)} questions to {OUT}: {counts}")
+    print(f"Wrote {len(questions)} questions to {args.out}: {counts}")
 
 
 if __name__ == "__main__":
