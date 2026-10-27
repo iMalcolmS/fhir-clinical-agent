@@ -14,6 +14,7 @@ import os
 import sys
 import time
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 
 import anyio
 import httpx
@@ -50,6 +51,12 @@ class Trace:
     completion_tokens: int = 0
     latency_s: float = 0.0
     stopped: str = "answer"  # "answer" or "max_steps"
+
+    def to_dict(self):
+        return {"question": self.question, "answer": self.answer, "tool_calls": self.tool_calls,
+                "llm_calls": self.llm_calls, "prompt_tokens": self.prompt_tokens,
+                "completion_tokens": self.completion_tokens, "latency_s": self.latency_s,
+                "stopped": self.stopped, "model": MODEL}
 
     def patient_ids(self):
         return {c["arguments"].get("patient_id") for c in self.tool_calls
@@ -128,22 +135,38 @@ async def run_agent(question, mcp_client, chat=None):
     return trace
 
 
-async def ask(question, data_dir="data/synthea"):
+def save_trace(trace, path=None):
+    """Append one trace as a JSON line (default runs/traces.jsonl, git-ignored)."""
+    path = path or os.environ.get("FHIR_TRACE_LOG", "runs/traces.jsonl")
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    entry = {"ts": datetime.now(timezone.utc).isoformat(timespec="seconds"), **trace.to_dict()}
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(entry) + "\n")
+
+
+async def ask(question, data_dir="data/synthea", reports_dir=None):
     os.environ.setdefault("FHIR_AUDIT_LOG", "runs/audit.jsonl")
-    async with Client(create_server(FhirStore(data_dir))) as client:
-        return await run_agent(question, client)
+    async with Client(create_server(FhirStore(data_dir, reports_dir))) as client:
+        trace = await run_agent(question, client)
+    save_trace(trace)
+    return trace
+
+
+def print_trace(trace):
+    print(trace.answer, "\n")
+    for c in trace.tool_calls:
+        print(f"  tool {c['tool']}({json.dumps(c['arguments'])}) {c['ms']} ms"
+              f"{' ERROR' if c['is_error'] else ''}")
+    print(f"\n  {trace.llm_calls} LLM calls, {trace.prompt_tokens}+{trace.completion_tokens} tokens, "
+          f"{trace.latency_s}s")
 
 
 def main():
     load_env()
     if len(sys.argv) < 2:
         sys.exit('Usage: python -m fhir_agent.agent "your question"')
-    trace = anyio.run(ask, " ".join(sys.argv[1:]))
-    print(trace.answer, "\n")
-    for c in trace.tool_calls:
-        print(f"  tool {c['tool']}({json.dumps(c['arguments'])}) {'ERROR' if c['is_error'] else ''}")
-    print(f"\n  {trace.llm_calls} LLM calls, {trace.prompt_tokens}+{trace.completion_tokens} tokens, "
-          f"{trace.latency_s}s")
+    reports_dir = os.environ.get("FHIR_REPORTS_DIR", "data/reports")
+    print_trace(anyio.run(ask, " ".join(sys.argv[1:]), "data/synthea", reports_dir))
 
 
 if __name__ == "__main__":
